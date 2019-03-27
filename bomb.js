@@ -1,18 +1,18 @@
 
 class Bomb{
     constructor(i, j){
-        self.i = i;
-        self.j = j;
-        self.number = 0;
-        self.bomb = true;
-        self.revealed = false;
+        this.i = i;
+        this.j = j;
+        this.number = 0;
+        this.bomb = true;
+        this.revealed = false;
     }
 
     show(){
-        if(!self.revealed){
+        if(!this.revealed){
             noFill();
             
-            rect(self.i*40, self.j*40, 40, 40);
+            rect(this.i*40, this.j*40, 40, 40);
         }
         else{
 
@@ -20,11 +20,11 @@ class Bomb{
     }
 
     reveal(){
-        if(self.revealed){
+        if(this.revealed){
             return;
         }
         else{
-            self.revealed = true;
+            this.revealed = true;
         }
     }
 }

@@ -1,29 +1,24 @@
 
 class Game{
     constructor(w, h){
-        self.w = w;
-        self.h = h;
+        this.w = w;
+        this.h = h;
 
-        self.grid = new Array(w);
+        this.grid = new Array(w);
         for(let i=0;i<w;i++){
-            self.grid[i] = new Array(h);
-        }
-
-        for(let i=0;i<w;i++){
+            this.grid[i] = new Array(h);
             for(let j=0;j<h;j++){
-                let new_bomb = new Bomb(i, j);
-                self.grid[i][j] = new_bomb;
+                this.grid[i][j] = new Bomb(i, j);
             }
         }
-        self.grid[0][0] = new Bomb(0, 0);
     }
     
     show(){
         noFill();
-        for(let i=0;i<self.w;i++){
-            for(let j=0;j<self.h;j++){
+        for(let i=0;i<this.w;i++){
+            for(let j=0;j<this.h;j++){
                 
-                self.grid[i][j].show();
+                this.grid[i][j].show();
             }
         }
     }
