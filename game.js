@@ -24,7 +24,14 @@ class Game{
     }
 
     clicked(x, y){
-
+        if(x>400 || y>400 || x<0 || y<0){
+            return;
+        }
+        else{
+            let i = Math.floor(x/40);
+            let j = Math.floor(y/40);
+            this.grid[i][j].reveal();
+        }
     }
 
     ended(){
