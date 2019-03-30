@@ -3,7 +3,7 @@ class Bomb{
     constructor(i, j){
         this.i = i;
         this.j = j;
-        this.number = 0;
+        this.number = 9;
         this.bomb = false;
         this.revealed = false;
     }
@@ -44,10 +44,11 @@ class Bomb{
 
     reveal(){
         if(this.revealed){
-            return;
+            return false;
         }
         else{
             this.revealed = true;
+            return (this.number == 0);
         }
     }
 }

@@ -23,6 +23,10 @@ class Game{
         for(let i=0;i<w;i++){
             for(let j=0;j<h;j++){
                 let num = 0;
+                if(this.grid[i][j].is_bomb()){
+                    continue;
+                }
+
                 for(let x_in=-1;x_in<=1;x_in++){
                     for(let y_in=-1;y_in<=1;y_in++){
                         if((x_in == 0 && y_in == 0) || i+x_in<0 || j+y_in<0 || i+x_in>w-1 || j+y_in>h-1){
@@ -33,6 +37,7 @@ class Game{
                         }
                     }
                 }
+                
                 this.grid[i][j].set_number(num);
             
             }
@@ -56,7 +61,24 @@ class Game{
         else{
             let i = Math.floor(x/40);
             let j = Math.floor(y/40);
-            this.grid[i][j].reveal();
+            this.reveal(i, j);
+        }
+    }
+
+    reveal(i, j){
+        if(this.grid[i][j].reveal()){
+            
+            for(let x_in=-1;x_in<=1;x_in++){
+                for(let y_in=-1;y_in<=1;y_in++){
+                    if((x_in == 0 && y_in == 0) || i+x_in<0 || j+y_in<0 || i+x_in>this.w-1 || j+y_in>this.h-1){
+                        continue;
+                    }
+                    else{
+                        this.reveal(i+x_in, j+y_in);
+                    }
+                }
+            }
+                    
         }
     }
 
