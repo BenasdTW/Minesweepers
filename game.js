@@ -3,6 +3,7 @@ class Game{
     constructor(w, h){
         this.w = w;
         this.h = h;
+        this.losed = false;
 
         this.grid = new Array(w);
         for(let i=0;i<w;i++){
@@ -62,6 +63,15 @@ class Game{
             let i = Math.floor(x/40);
             let j = Math.floor(y/40);
             this.reveal(i, j);
+            if(this.grid[i][j].is_bomb()){
+                for(let i=0;i<this.w;i++){
+                    for(let j=0;j<this.h;j++){
+                        this.reveal(i, j);
+                        //console.log(1);
+                    }
+                }
+                this.losed = true;
+            }
         }
     }
 
@@ -83,6 +93,6 @@ class Game{
     }
 
     ended(){
-        return false;
+        return this.losed;
     }
 }

@@ -11,9 +11,12 @@ function draw(){
 
     background(255);
     
-    if(!game.ended()){
-        game.show();
-    }
+    //if(!game.ended()){
+    game.show();
+    //}
+    //else{
+        
+    //}
 }
 
 function mousePressed(){
