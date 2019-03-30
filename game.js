@@ -13,9 +13,26 @@ class Game{
             }
         }
 
+
+        //random spot
+        let temp_arr = Array();
         for(let i=0;i<10;i++){
-            let choice_x = Math.floor((Math.random() * 10));
-            let choice_y = Math.floor((Math.random() * 10));
+            let choice_x = Math.floor((Math.random() * 10));;
+            let choice_y = Math.floor((Math.random() * 10));;
+            
+            // if the spot is already been set to bomb then reset it
+            for(let i=0;i<temp_arr.length;i++){
+
+                while(true){
+                    choice_x = Math.floor((Math.random() * 10));
+                    choice_y = Math.floor((Math.random() * 10));
+                    if(temp_arr[i] != [choice_x, choice_y]){
+                        break;
+                    }
+                }
+            }
+            
+            temp_arr.push([choice_x, choice_y]);
             this.grid[choice_x][choice_y].set_bomb();
         }
 
