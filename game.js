@@ -16,24 +16,20 @@ class Game{
 
         //random spot
         let temp_arr = Array();
-        for(let i=0;i<10;i++){
-            let choice_x = Math.floor((Math.random() * 10));;
-            let choice_y = Math.floor((Math.random() * 10));;
-            
-            // if the spot is already been set to bomb then reset it
-            for(let i=0;i<temp_arr.length;i++){
 
-                while(true){
-                    choice_x = Math.floor((Math.random() * 10));
-                    choice_y = Math.floor((Math.random() * 10));
-                    if(temp_arr[i] != [choice_x, choice_y]){
-                        break;
-                    }
-                }
+        for(let i=0;i<w;i++){
+            for(let j=0;j<h;j++){
+                temp_arr.push([i, j]);
             }
+        }
+        
+        for(let i=0;i<15;i++){
+            let pos = Math.floor((Math.random() * (100-i)));
+            let choice = temp_arr[pos];
+            temp_arr.splice(pos, 1);
+            // if the spot is already been chosen to bomb then reset it
             
-            temp_arr.push([choice_x, choice_y]);
-            this.grid[choice_x][choice_y].set_bomb();
+            this.grid[choice[0]][choice[1]].set_bomb();
         }
 
 
