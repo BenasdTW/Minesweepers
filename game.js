@@ -1,6 +1,6 @@
 
 class Game{
-    constructor(w, h){
+    constructor(w, h, bombs){
         this.w = w;
         this.h = h;
         this.losed = false;
@@ -23,8 +23,8 @@ class Game{
             }
         }
         
-        for(let i=0;i<15;i++){
-            let pos = Math.floor((Math.random() * (100-i)));
+        for(let i=0;i<bombs;i++){
+            let pos = Math.floor((Math.random() * (w*h-i)));
             let choice = temp_arr[pos];
             temp_arr.splice(pos, 1);
             // if the spot is already been chosen to bomb then reset it
@@ -69,7 +69,7 @@ class Game{
     }
 
     clicked(x, y){
-        if(x>400 || y>400 || x<0 || y<0){
+        if(x>this.w*40 || y>this.h*40 || x<0 || y<0){
             return;
         }
         else{
